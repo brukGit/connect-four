@@ -18,6 +18,11 @@ const NODEMAILER_HOST = process.env.NODEMAILER_HOST;
 const NODEMAILER_PORT = process.env.NODEMAILER_PORT;
 const PORT = process.env.PORT;
 
+// Determine the base URL based on the environment
+const baseUrl = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:3001'  // Update with your actual development URL
+  : 'https://your-production-url';  // Update with your actual production URL
+
 
 // generate a unique random token. You can use libraries like crypto or uuid for this purpose. 
 const { v4: uuidv4 } = require('uuid');
@@ -233,7 +238,7 @@ async function startServer() {
       }
     });
     // Start the server and listen on the specified port
-    const port = process.env.PORT || 3000;
+    const port = PORT || 3000;
     
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}`);
