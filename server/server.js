@@ -7,7 +7,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const uri = 'mongodb+srv://Bruk:1234567890@clusterconnectfour.r1csi5g.mongodb.net/?retryWrites=true&w=majority';
+require('dotenv').config();
+
+
+const MONGODB_URI = process.env.MONGODB_URI;
+const MY_EMAIL = process.env.MY_EMAIL;
+const NODEMAILER_USER = process.env.NODEMAILER_USER;
+const NODEMAILER_PASSWORD = process.env.NODEMAILER_PASSWORD;
+const NODEMAILER_HOST = process.env.NODEMAILER_HOST;
+const NODEMAILER_PORT = process.env.NODEMAILER_PORT;
+const PORT = process.env.PORT;
+
+
 // generate a unique random token. You can use libraries like crypto or uuid for this purpose. 
 const { v4: uuidv4 } = require('uuid');
 
@@ -17,34 +28,40 @@ function generateVerificationToken() {
 const nodemailer = require('nodemailer');
 
 async function sendVerificationEmail(email, name, verificationToken, userID) {
-  // Create a Nodemailer transporter
-  const transporter = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
-  port: 2525,
-  auth: {
-    user: "6c392985953443",
-    pass: "2375c98f1aca59"
-  }
-});
-  //<a href="http://localhost:3001/verify?token=${verificationToken}">Verify Email</a>`,
-  // Compose the email
-  const mailOptions = {
-    from: 'abrahabiruke@gmail.com',
-    to: email,
-    subject: 'Email Verification for ConnectFour Game!',
-    html: `<p>Hi ${name}. Please click the following link to verify your email:</p>
-    <a href="http://localhost:3000/verify/${userID}/${verificationToken}">Verify Email</a>`,
-           
-  };
+  try {
+    // Create a Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      host: NODEMAILER_HOST,
+      port: NODEMAILER_PORT,
+      auth: {
+        user: NODEMAILER_USER,
+        pass: NODEMAILER_PASSWORD,
+      },
+    });
 
-  // Send the email
-  await transporter.sendMail(mailOptions);
-  //
-  console.log('Email sent.')
+    // Compose the email
+    const mailOptions = {
+      from: MY_EMAIL,
+      to: email,
+      subject: 'Email Verification for ConnectFour Game!',
+      html: `<p>Hi ${name}. Please click the following link to verify your email:</p>
+      <a href="${baseUrl}/verify/${userID}/${verificationToken}">Verify Email</a>`,
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    console.log('Email sent successfully.');
+  } catch (error) {
+    // Handle the error without breaking the server
+    console.error('Error sending email:', error.message);
+    // You can log the error, send a notification, or take other appropriate actions
+  }
 }
+
 async function connectToMongoDB() {
   try {
-    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, socketTimeoutMS: 30000 });
+    await mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, socketTimeoutMS: 30000 });
     console.log('Connected to MongoDB successfully!');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
@@ -154,7 +171,15 @@ async function startServer() {
         // Redirect the user to a success page or display a success message
         // res.redirect('http://localhost:3001/success?isEmailVerified=true');
         // Redirect the user to the success page with the necessary information
-        res.redirect(`http://localhost:3001/success?isEmailVerified=true&token=${verificationToken}`);
+        const frontendPort = process.env.NODE_ENV === 'development' ? 3001 : '';
+
+        process.env.NODE_ENV === 'development'
+        ? res.redirect(`http://localhost:${frontendPort}/success?isEmailVerified=true&token=${verificationToken}`)
+        // : res.redirect('https://your-production-url/success?isEmailVerified=true&token=${verificationToken}');
+        : '/success?isEmailVerified=true&token=${verificationToken}';
+
+
+        
       } catch (error) {
         console.log('NOT verifying.')
         console.error('Error verifying email:', error);
@@ -209,6 +234,7 @@ async function startServer() {
     });
     // Start the server and listen on the specified port
     const port = process.env.PORT || 3000;
+    
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}`);
     });

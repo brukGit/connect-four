@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import { validateUsername, validatePassword } from './CredentialValidation';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
+
 function LoginForm() {
   const { setUsername, setSubmitted } = useContext(UserContext);
   const [username, setUsernameLocal] = useState('');
@@ -27,7 +30,7 @@ function LoginForm() {
 
     if (username) {
       try {
-        await axios.post('http://localhost:3000/login', { username, password });
+        await axios.post(`${apiUrl}/login`, { username, password });
         console.log('User logged in successfully!');
         setLoginError('');
         setSubmitted(true);

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import { validateUsername, validatePassword, validatePhoneNumber, validateEmail } from './CredentialValidation';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
 function RegisterForm() {
   const { setUsername, setSubmitted } = useContext(UserContext);
   const [username, setUsernameLocal] = useState('');
@@ -49,7 +50,7 @@ function RegisterForm() {
       navigate('/register');
 
       try {
-        await axios.post('http://localhost:3000/register', {
+        await axios.post(`${apiUrl}/register`, {
           username,
           password,
           phoneNumber,

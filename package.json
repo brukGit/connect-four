@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "client-start": "cd client && npm start",
+    "client-start": "cd client && cross-env REACT_APP_API_URL=http://localhost:3002 npm start",
     "client-build": "cd client && npm run build"
   },
   "repository": {
