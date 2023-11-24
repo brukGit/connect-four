@@ -1,0 +1,21 @@
+{
+  "name": "connectfour",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Bruk",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.0",
+    "nodemailer": "^6.9.3",
+    "tar": "^6.1.15",
+    "uuid": "^9.0.0"
+  }
+}
