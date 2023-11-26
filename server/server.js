@@ -134,8 +134,8 @@ async function startServer() {
         const savedUser = await newUser.save();
         const userID = savedUser._id; // Assuming you're using MongoDB and the user ID is stored in _id field
         
-        console.log('User registered.')
-        console.log('verification token: ', verificationToken)
+        // console.log('User registered.')
+        // console.log('verification token: ', verificationToken)
         // Send the verification email to the user
         sendVerificationEmail(email, username, verificationToken, userID);
         res.status(200).json({ message: 'User registered successfully! Please check your email to verify your account.' });
