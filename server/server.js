@@ -18,10 +18,12 @@ const NODEMAILER_HOST = process.env.NODEMAILER_HOST;
 const NODEMAILER_PORT = process.env.NODEMAILER_PORT;
 const PORT = process.env.PORT;
 
+const productionUrl = "https://connect-four-pz-designs.onrender.com";
+
 // Determine the base URL based on the environment
 const baseUrl = process.env.NODE_ENV === 'development'
   ? 'http://localhost:3001'  // Update with your actual development URL
-  : 'https://your-production-url';  // Update with your actual production URL
+  : productionUrl;  // Update with your actual production URL
 
 
 // generate a unique random token. You can use libraries like crypto or uuid for this purpose. 
@@ -180,8 +182,8 @@ async function startServer() {
 
         process.env.NODE_ENV === 'development'
         ? res.redirect(`http://localhost:${frontendPort}/success?isEmailVerified=true&token=${verificationToken}`)
-        // : res.redirect('https://your-production-url/success?isEmailVerified=true&token=${verificationToken}');
-        : '/success?isEmailVerified=true&token=${verificationToken}';
+        : res.redirect(`${productionUrl}/success?isEmailVerified=true&token=${verificationToken}`);
+       
 
 
         
@@ -215,6 +217,11 @@ async function startServer() {
         console.error('Error logging in:', error);
         res.status(500).json({ message: 'An error occurred while logging in' });
       }
+    });
+
+        // Health check route
+    app.get('/health', (req, res) => {
+      res.status(200).send('OK');
     });
 
     // Handle the GET request for user information

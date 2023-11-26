@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bbfcee01.css",
+    "main.js": "/static/js/main.3fcf9061.js",
+    "static/js/787.b9fd7435.chunk.js": "/static/js/787.b9fd7435.chunk.js",
+    "static/media/puzzlelogo.png": "/static/media/puzzlelogo.35695c6abb2c5d379114.png",
+    "index.html": "/index.html",
+    "main.bbfcee01.css.map": "/static/css/main.bbfcee01.css.map",
+    "main.3fcf9061.js.map": "/static/js/main.3fcf9061.js.map",
+    "787.b9fd7435.chunk.js.map": "/static/js/787.b9fd7435.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bbfcee01.css",
+    "static/js/main.3fcf9061.js"
+  ]
+}
