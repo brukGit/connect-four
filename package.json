@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A game of connect four.",
   "main": "server/server.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node server/server.js",
     "client-start": "cd client && cross-env REACT_APP_API_URL=http://localhost:3002 npm start",
