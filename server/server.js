@@ -194,6 +194,12 @@ async function startServer() {
       }
     });
     
+        // Handle successful email verification
+    app.get('/success', (req, res) => {
+      res.send('Email verification successful! <a href="https://connect-four-pz-designs.onrender.com">Log in and play</a>.');
+
+    });
+
     // Handle the POST request for user login
     app.post('/login', async (req, res) => {
       try {
