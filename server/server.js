@@ -4,10 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
-res.setHeader('Content-Type', 'text/css');
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -206,6 +202,7 @@ async function startServer() {
     
     //Handle success
     app.get('/success', (req, res) => {
+      res.setHeader('Content-Type', 'text/css');
       res.render('success', { title: 'Success', message: 'Email verification successful!', content: 'success' });
     });
 
@@ -238,8 +235,7 @@ async function startServer() {
     app.get('/health', (req, res) => {
       // Render the 'health.ejs' view and pass data
        // Log the value of content
-      console.log('Content:', 'health');
- 
+      res.setHeader('Content-Type', 'text/css');
       res.render('health', { title: 'Health Check', content: 'health' });
     });
 
@@ -281,6 +277,7 @@ startServer();
 
 // Welcome page route
 app.get('/', (req, res) => {
+  res.setHeader('Content-Type', 'text/css');
   res.render('welcome', { title: 'Welcome', content: 'welcome' });
 });
 
