@@ -18,7 +18,7 @@ const NODEMAILER_HOST = process.env.NODEMAILER_HOST;
 const NODEMAILER_PORT = process.env.NODEMAILER_PORT;
 const PORT = process.env.PORT;
 
-const productionUrl = "https://connect-four-pz-designs.onrender.com";
+const productionUrl = "https://connect-four-pz-designs-backend.onrender.com";
 
 // Determine the base URL based on the environment
 const baseUrl = process.env.NODE_ENV === 'development'
