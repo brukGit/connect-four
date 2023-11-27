@@ -203,7 +203,7 @@ async function startServer() {
     
     //Handle success
     app.get('/success', (req, res) => {
-      res.render('success', { title: 'Success', message: 'Email verification successful!' });
+      res.render('success', { title: 'Success', message: 'Email verification successful!', content: 'success' });
     });
 
     // Handle the POST request for user login
@@ -231,10 +231,12 @@ async function startServer() {
       }
     });
 
-        // Health check route
+      // Some route handler
     app.get('/health', (req, res) => {
-      res.status(200).render('health', { title: 'Health Check' });
+      // Render the 'health.ejs' view and pass data
+      res.render('health', { title: 'Health Check', content: 'health' });
     });
+
 
     // Handle the GET request for user information
     app.get('/user', async (req, res) => {
@@ -273,5 +275,6 @@ startServer();
 
 // Welcome page route
 app.get('/', (req, res) => {
-  res.render('welcome', { title: 'Welcome' });
+  res.render('welcome', { title: 'Welcome', content: 'welcome' });
 });
+
