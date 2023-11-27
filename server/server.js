@@ -203,7 +203,7 @@ async function startServer() {
     //Handle success
     app.get('/success', (req, res) => {
       // res.setHeader('Content-Type', 'text/css');
-      res.render('success', {message: 'Email verification successful!', content: 'success' });
+      res.render('success', { content: 'success' });
     });
 
     // Handle the POST request for user login
@@ -276,6 +276,6 @@ startServer();
 // Welcome page route
 app.get('/', (req, res) => {
   // res.setHeader('Content-Type', 'text/css');
-  res.render('welcome', { title: 'Welcome!', content: 'welcome' });
+  res.render('welcome', {  content: 'welcome' });
 });
 
