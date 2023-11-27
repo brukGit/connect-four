@@ -1,0 +1,29 @@
+body {
+    background-color: azure;
+    text-align: center;
+
+
+}
+
+.container {
+  background-color: azure;
+  text-align: center;
+}
+
+.server-message {
+    color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .server-message h1 {
+    font-size: 32px;
+    
+  }
+  .server-message p {
+    font-size: 24px;
+  }
+  .server-message a {
+    color: blue;
+    text-decoration: none;
+  }

@@ -1,5 +1,5 @@
-// server.js
 const express = require('express');
+const ejs = require('ejs');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -8,7 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 require('dotenv').config();
-
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.set('views', path.join(__dirname, 'views')); // Create a 'views' folder and place your EJS files there
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const MY_EMAIL = process.env.MY_EMAIL;
@@ -194,10 +196,9 @@ async function startServer() {
       }
     });
     
-        // Handle successful email verification
+    //Handle success
     app.get('/success', (req, res) => {
-      res.send('Email verification successful! <a href="https://connect-four-pz-designs.onrender.com">Log in and play</a>.');
-
+      res.render('success', { title: 'Success', message: 'Email verification successful!' });
     });
 
     // Handle the POST request for user login
@@ -227,7 +228,7 @@ async function startServer() {
 
         // Health check route
     app.get('/health', (req, res) => {
-      res.status(200).send('OK');
+      res.status(200).render('health', { title: 'Health Check' });
     });
 
     // Handle the GET request for user information
@@ -265,6 +266,7 @@ async function startServer() {
 
 startServer();
 
+// Welcome page route
 app.get('/', (req, res) => {
-  res.send('Welcome to the game app!');
+  res.render('welcome', { title: 'Welcome' });
 });
