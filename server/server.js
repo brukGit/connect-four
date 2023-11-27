@@ -276,6 +276,7 @@ startServer();
 // Welcome page route
 app.get('/', (req, res) => {
   // res.setHeader('Content-Type', 'text/css');
-  res.render('welcome', {  content: 'welcome' });
+  // res.render('welcome', {  content: 'welcome' });
+  res.send('Welcome to connectFour by puzzle designs!');
 });
 

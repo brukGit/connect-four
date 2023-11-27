@@ -27,3 +27,13 @@ body {
     color: blue;
     text-decoration: none;
   }
+
+  .server-message a:hover {
+    color: green;
+    text-decoration: underline;
+  }
+
+  server-message__link {
+    border: 2px solid blue;
+    padding: 20px;
+  }
