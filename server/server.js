@@ -203,7 +203,7 @@ async function startServer() {
     //Handle success
     app.get('/success', (req, res) => {
       // res.setHeader('Content-Type', 'text/css');
-      res.render('success', { title: 'Success', message: 'Email verification successful!', content: 'success' });
+      res.render('success', {message: 'Email verification successful!', content: 'success' });
     });
 
     // Handle the POST request for user login
@@ -233,10 +233,8 @@ async function startServer() {
 
       // Some route handler
     app.get('/health', (req, res) => {
-      // Render the 'health.ejs' view and pass data
-       // Log the value of content
-      // res.setHeader('Content-Type', 'text/css');
-      res.render('health', { title: 'Health Check', content: 'health' });
+     
+      res.render('health', {  content: 'health' });
     });
 
 
@@ -278,6 +276,6 @@ startServer();
 // Welcome page route
 app.get('/', (req, res) => {
   // res.setHeader('Content-Type', 'text/css');
-  res.render('welcome', { title: 'Welcome', content: 'welcome' });
+  res.render('welcome', { title: 'Welcome!', content: 'welcome' });
 });
 

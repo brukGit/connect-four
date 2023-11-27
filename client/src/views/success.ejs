@@ -1,8 +1,7 @@
 <!-- views/success.ejs -->
-<%- include('layout', { title: 'Success', content: 'success' }) %>
+<%- include('layout', { message: 'Email verification successful!', content: 'success' }) %>
   <div class="server-message">
-    <h1><%= title %></h1>
     <p><%= message %></p>
-    <p>Go to <a href="https://connect-four-pz-designs.onrender.com">Log in and play</a>.</p>
+    <p><a href="https://connect-four-pz-designs.onrender.com">Log in and play</a>.</p>
   </div>
 </html>
