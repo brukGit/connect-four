@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 // Serve static files from the client/public directory
 app.use(express.static(path.join(__dirname, 'client', 'public')));
 // Set the views directory for EJS
-app.set('views', path.join(__dirname, 'client', 'src', 'views'));
+app.set('views', path.join(__dirname, 'client/src/views'));
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const MY_EMAIL = process.env.MY_EMAIL;
