@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
+res.setHeader('Content-Type', 'text/css');
+
+
 
 const app = express();
 app.use(cors());
@@ -13,7 +16,7 @@ require('dotenv').config();
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 // Serve static files from the client/public directory
-app.use(express.static(path.join(__dirname, 'client', 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 // Set the views directory for EJS
 app.set('views', path.join(__dirname, '../client/src/views'));
 
@@ -234,6 +237,9 @@ async function startServer() {
       // Some route handler
     app.get('/health', (req, res) => {
       // Render the 'health.ejs' view and pass data
+       // Log the value of content
+      console.log('Content:', 'health');
+ 
       res.render('health', { title: 'Health Check', content: 'health' });
     });
 
