@@ -94,7 +94,7 @@ function LoginForm() {
               Sign Up
             </button>
             {loginError && <p>{loginError}</p>}
-            <p style={{ border: '1px solid blue', padding: '10px'}}>Mock username - <span style={{color: 'blue'}}>testusername</span>
+            <p style={{ border: '1px solid blue', padding: '10px', margin: '10px auto', width: '50%', textAlign: 'center'}}>Mock username - <span style={{color: 'blue'}}>testusername</span>
             <br/>Mock password - <span style={{color: 'blue'}}>Testpassword1#</span></p>
           </form>
          
