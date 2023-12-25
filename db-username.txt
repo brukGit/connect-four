@@ -1,0 +1,32 @@
+MongoDB account:
+abrahabiruke@gmail.com
+pass: secMongo#1
+
+clusterConnectFour:
+username:  Bruk
+password:  1234567890
+
+
+Web/game login:
+username: testusername
+password: Testpassword1#
+
+
+git commit -m "New gitignore .gitignore"
+git remote add origin https://github.com/brukGit/connectFour_PuzzleDesigns
+
+
+// 
+cd Studies/_webDev/_Project/fullstack-app
+
+bringing the models into the same file where the database connection is being made.
+But then bring them in and requiring them in after the database connection has been made.
+
+// Mailtrap credentials
+const transporter = nodemailer.createTransport({
+  host: "sandbox.smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: "6c392985953443",
+    pass: "2375c98f1aca59"
+  }
