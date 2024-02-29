@@ -5,7 +5,7 @@ import RegisterForm from './RegisterForm';
 import GamePage from './GamePage';
 import SuccessPage from './SuccessPage';
 import { UserContext } from './UserContext';
-import logo from './assets/images/puzzlelogo.png';
+import logo from './assets/images/company_logo.png';
 import './App.css';
 
 function App() {
